@@ -227,8 +227,8 @@ app.post("/api/book", async (req, res) => {
     const existing = await Appointment.findOne({ date, time });
     if (existing) {
       return res
-        .status(400)
-        .json({ success: false, message: "Slot not available" });
+        .status(200)
+        .json({ success: true, message: "Slot not available" });
     }
 
     // 2. Prepare Calendar Event times in IST
@@ -289,7 +289,9 @@ app.post("/api/cancel", async (req, res) => {
     const { email, date, time } = req.body;
     const appt = await Appointment.findOne({ email, date, time });
     if (!appt)
-      return res.status(404).json({ success: false, message: "Not found" });
+      return res
+        .status(200)
+        .json({ success: true, message: "Details not found" });
 
     // Delete from Google Calendar
     await calendar.events.delete({
