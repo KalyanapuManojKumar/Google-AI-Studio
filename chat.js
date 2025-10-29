@@ -170,7 +170,7 @@ Operate only at these branches (never invent new ones):
     res.json({
       success: true,
       mode: responseMode,
-      reply,
+      message: reply,
     });
   } catch (error) {
     console.error("Error:", error);
