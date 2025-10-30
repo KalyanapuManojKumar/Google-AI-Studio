@@ -25,6 +25,10 @@ app.use(cors(corsOptions));
 
 app.use("/api", router);
 
+app.get("/", (req, res) => {
+  res.send("Hello from Express backend!");
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
